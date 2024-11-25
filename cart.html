@@ -37,7 +37,7 @@
         </div>
         <div id="cart-total">
             <p>Total: $<span id="total-price">0</span></p>
-            <button  id="checkout-btn">Proceed to Checkout</button>
+            <button onclick="openModal()" id="checkout-btn">Proceed to Checkout</button>
         </div>
     </section>
 
@@ -177,7 +177,33 @@
         `).join('');
     }
 }
+function openModal() {
+    document.getElementById("seatModal").style.display = "block";
+}
 
+// Function to close the modal
+function closeModal() {
+    document.getElementById("seatModal").style.display = "none";
+}
+
+// Function to place the order
+function placeOrder() {
+    const seatNumber = document.getElementById("seatNumber").value;
+    if (seatNumber) {
+        alert(`Order placed for seat number: ${seatNumber}`);
+        closeModal(); // Close the modal after placing the order
+    } else {
+        alert("Please enter a seat number.");
+    }
+}
+
+// Close the modal when clicking outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById("seatModal");
+    if (event.target === modal) {
+        closeModal();
+    }
+}
 
         document.addEventListener('DOMContentLoaded', function() {
             updateTotalPrice();
@@ -185,6 +211,17 @@
         });
     </script>
 
-  
+    <!-- Modal Structure -->
+    <div id="seatModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Enter Your Seat Number</h2>
+            <div class="modal-button">
+
+                <input type="number" id="seatNumber" placeholder="Seat Number" />
+                <button class="place-order-button" onclick="placeOrder()">Place Order</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -56,7 +56,12 @@
         </div>
     </section>
     <section>
-         
+            <div class="ourmenu-category" id="search-items">
+                
+                <div class="ourmenu-items">
+               </div>
+            </div>
+        
 <!-- best seller -->
         <div class="ourmenu-category" id="best-seller">
             <div class="ourmenu-category-header">
@@ -351,7 +356,41 @@ function showSuccessMessage(message) {
 function redirecttoproductdetails(id){
     window.location.href = `product.html?id=${id}`;
 }
+function searchItems(query) {
+    const searchContainer = document.getElementById('search-items').querySelector('.ourmenu-items');
+    searchContainer.innerHTML = ''; // Clear any previous search results
 
+    const filteredItems = foodItems.filter(item =>
+        item.title.toLowerCase().includes(query.toLowerCase())
+    );
+
+    if (filteredItems.length > 0) {
+        const itemsHTML = filteredItems.map(createMenuItem).join('');
+        searchContainer.innerHTML = itemsHTML;
+    } else {
+        searchContainer.innerHTML = '<p>No items found.</p>';
+    }
+}
+
+// Event listener for search input
+let timeout = null;
+document.querySelector('.search-input').addEventListener('input', (event) => {
+    const query = event.target.value;
+    console.log(query)
+    if (query) {
+        // Clear the previous timeout if it exists
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        // Set a new timeout
+        timeout = setTimeout(() => {
+            searchItems(query);
+        }, 1000); // Wait for 500ms before searching
+    } else {
+        // Optionally clear the search results if input is empty
+        document.getElementById('search-items').querySelector('.ourmenu-items').innerHTML = '';
+    }
+});
 // When the webpage is loaded, fetch the food items and display them
 document.addEventListener('DOMContentLoaded', function() {
     fetchFoodItems(); // Fetch food items when the page loads

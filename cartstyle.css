@@ -109,3 +109,77 @@
 .remove-button:hover {
     background-color: #ff1a1a; /* Darker red on hover */
 }
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+   
+    width: 300px; /* Could be more or less, depending on screen size */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+.modal-button{
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    /* flex-direction: column; */
+}
+/* Close Button */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Close button hover effect */
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Input field */
+input[type="number"] {
+    /* width: 100%;  */
+    padding: 10px; /* Some padding */
+    /* margin: 10px 0; Space above and below */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+/* Place Order Button */
+.place-order-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 15px;
+    align-self: flex-end;
+    border: none;
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer;
+    float: right; /* Align to the right */
+}
+
+.place-order-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
